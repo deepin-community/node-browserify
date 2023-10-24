@@ -1,0 +1,3 @@
+# Test data
+source-is-missing test/multi_bundle/_prelude.js
+source-contains-prebuilt-javascript-object test/multi_bundle/_prelude.js

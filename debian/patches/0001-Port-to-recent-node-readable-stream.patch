@@ -1,0 +1,45 @@
+From 887e1907781646ff064bf66cb6b4341721a18c1a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20Roucari=C3=A8s?= <rouca@debian.org>
+Date: Wed, 4 Mar 2020 16:54:04 +0100
+Subject: Port to recent node-readable-stream
+
+Forwarded: not-needed
+---
+ lib/builtins.js | 10 +++++-----
+ package.json    |  2 +-
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/lib/builtins.js b/lib/builtins.js
+index d7bdbe1..8b56bdc 100644
+--- a/lib/builtins.js
++++ b/lib/builtins.js
+@@ -24,11 +24,11 @@ exports.querystring = require.resolve('querystring-es3/');
+ exports.readline = require.resolve('./_empty.js');
+ exports.repl = require.resolve('./_empty.js');
+ exports.stream = require.resolve('stream-browserify');
+-exports._stream_duplex = require.resolve('readable-stream/duplex.js');
+-exports._stream_passthrough = require.resolve('readable-stream/passthrough.js');
+-exports._stream_readable = require.resolve('readable-stream/readable.js');
+-exports._stream_transform = require.resolve('readable-stream/transform.js');
+-exports._stream_writable = require.resolve('readable-stream/writable.js');
++exports._stream_duplex = require.resolve('readable-stream/lib/_stream_duplex.js');
++exports._stream_passthrough = require.resolve('readable-stream/lib/_stream_passthrough.js');
++exports._stream_readable = require.resolve('readable-stream/lib/_stream_readable.js');
++exports._stream_transform = require.resolve('readable-stream/lib/_stream_transform.js');
++exports._stream_writable = require.resolve('readable-stream/lib/_stream_writable.js');
+ exports.string_decoder = require.resolve('string_decoder/');
+ exports.sys = require.resolve('util/util.js');
+ exports.timers = require.resolve('timers-browserify');
+diff --git a/package.json b/package.json
+index 72a6350..164b3ac 100644
+--- a/package.json
++++ b/package.json
+@@ -55,7 +55,7 @@
+     "punycode": "^1.3.2",
+     "querystring-es3": "~0.2.0",
+     "read-only-stream": "^2.0.0",
+-    "readable-stream": "^2.0.2",
++    "readable-stream": "^3.4.0",
+     "resolve": "^1.1.4",
+     "shasum-object": "^1.0.0",
+     "shell-quote": "^1.6.1",

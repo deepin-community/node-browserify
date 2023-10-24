@@ -1,0 +1,5 @@
+0001-Port-to-recent-node-readable-stream.patch
+0002-Improve-building-of-example.patch
+0003-Use-mkdip.patch
+0004-Replace-shasum-object-by-shasum.patch
+0005-Fix-test-for-i386.patch

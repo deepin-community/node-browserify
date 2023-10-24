@@ -1,0 +1,4 @@
+node_modules/
+example/api/api.js
+example/multiple_bundles/static/*.js
+example/source_maps/js/build/*.js

@@ -1,5 +1,45 @@
-template-repository (1.0-1) unstable; urgency=medium
+node-browserify (17.0.0+ds-5) unstable; urgency=medium
 
-  * Initial release
+  * Team upload
+  * Declare compliance with policy 4.6.1
+  * Replace /releases by /tags in GitHub urls
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Yadd <yadd@debian.org>  Mon, 31 Oct 2022 09:09:49 +0100
+
+node-browserify (17.0.0+ds-4) unstable; urgency=medium
+
+  * Team upload
+  * Update nodejs dependency to nodejs:any
+  * Fix test for tap >= 15 (--no-cov) (Closes: #1009531)
+
+ -- Yadd <yadd@debian.org>  Thu, 21 Apr 2022 12:57:03 +0200
+
+node-browserify (17.0.0+ds-3) unstable; urgency=medium
+
+  * Team upload
+  * Improve i386 patch
+
+ -- Yadd <yadd@debian.org>  Fri, 28 Jan 2022 17:03:00 +0100
+
+node-browserify (17.0.0+ds-2) unstable; urgency=medium
+
+  * Team upload
+
+  [ lintian-brush ]
+  * Bump debhelper from old 11 to 13
+  * Set upstream metadata fields: Bug-Submit
+  * Remove obsolete fields Contact, Name from debian/upstream/metadata
+    (already present in machine-readable debian/copyright)
+
+  [ Yadd ]
+  * Use dh-sequence-nodejs instead of pkg-js-tools
+  * Fix test for i386
+  * Add lintian overrides
+
+ -- Yadd <yadd@debian.org>  Fri, 28 Jan 2022 16:25:18 +0100
+
+node-browserify (17.0.0+ds-1) unstable; urgency=low
+
+  * Initial release (Closes: #780357)
+
+ -- Bastien Roucariès <rouca@debian.org>  Fri, 03 Sep 2021 19:26:15 +0000

@@ -1,0 +1,37 @@
+From c52409b750ccfd538629bd2e8b4e92ebac4c9d25 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20Roucari=C3=A8s?= <rouca@debian.org>
+Date: Fri, 3 Sep 2021 19:48:04 +0000
+Subject: Replace shasum-object by shasum
+
+Forwarded: not-needed
+---
+ index.js             | 2 +-
+ test/syntax_cache.js | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/index.js b/index.js
+index 3bf58b0..9494152 100644
+--- a/index.js
++++ b/index.js
+@@ -18,7 +18,7 @@ var isArray = Array.isArray;
+ var defined = require('defined');
+ var has = require('has');
+ var sanitize = require('htmlescape').sanitize;
+-var shasum = require('shasum-object');
++var shasum = require('shasum');
+ 
+ var bresolve = require('browser-resolve');
+ var resolve = require('resolve');
+diff --git a/test/syntax_cache.js b/test/syntax_cache.js
+index 202e5f6..ff2a5de 100644
+--- a/test/syntax_cache.js
++++ b/test/syntax_cache.js
+@@ -1,7 +1,7 @@
+ var Seq = require('seq');
+ var browserify = require('../');
+ var test = require('tap').test;
+-var shasum = require('shasum-object');
++var shasum = require('shasum');
+ 
+ test('syntax cache - valid', function (t) {
+     t.plan(2);

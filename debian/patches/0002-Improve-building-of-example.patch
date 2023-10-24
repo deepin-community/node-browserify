@@ -1,0 +1,49 @@
+From 600e0505ba0cad05cd197552e3eedc8729ba4846 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20Roucari=C3=A8s?= <rouca@debian.org>
+Date: Mon, 16 Mar 2020 17:42:31 +0100
+Subject: Improve building of example
+
+Use environment variable for building browserify
+---
+ example/multiple_bundles/build.sh | 9 +++++----
+ example/source_maps/build.js      | 2 +-
+ example/source_maps/build.sh      | 6 ++++--
+ 3 files changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/example/multiple_bundles/build.sh b/example/multiple_bundles/build.sh
+index 1066a86..8fe7d92 100755
+--- a/example/multiple_bundles/build.sh
++++ b/example/multiple_bundles/build.sh
+@@ -1,4 +1,5 @@
+-#!/bin/bash
+-browserify -r ./robot.js > static/common.js
+-browserify -x ./robot.js beep.js > static/beep.js
+-browserify -x ./robot.js boop.js > static/boop.js
++#!/bin/sh
++BROWSERIFY=${BROWSERIFY:-browserify}
++$BROWSERIFY -r ./robot.js > static/common.js
++$BROWSERIFY -x ./robot.js beep.js > static/beep.js
++$BROWSERIFY -x ./robot.js boop.js > static/boop.js
+diff --git a/example/source_maps/build.js b/example/source_maps/build.js
+index e65bc7e..9d291f9 100644
+--- a/example/source_maps/build.js
++++ b/example/source_maps/build.js
+@@ -1,4 +1,4 @@
+-var browserify = require('../..'),
++var browserify = require('browserify'),
+     path = require('path'),
+     fs = require('fs'),
+     bundlePath = path.join(__dirname, 'js', 'build', 'bundle.js');
+diff --git a/example/source_maps/build.sh b/example/source_maps/build.sh
+index 6ae19fb..2f2c644 100755
+--- a/example/source_maps/build.sh
++++ b/example/source_maps/build.sh
+@@ -1,4 +1,6 @@
+-#!/bin/bash
+-../../bin/cmd.js --debug -e ./js/main.js > js/build/bundle.js
++#!/bin/sh
++BROWSERIFY=${BROWSERIFY:-browserify}
++
++${BROWSERIFY} --debug -e ./js/main.js > js/build/bundle.js
+ 
+ echo bundle was generated with source maps, you can now open index.html
