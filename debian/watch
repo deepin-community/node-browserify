@@ -1,0 +1,6 @@
+version=4
+opts=\
+dversionmangle=auto,\
+repacksuffix=+ds,\
+filenamemangle=s%(?:.*/)?v?@ANY_VERSION@(@ARCHIVE_EXT@)$%@PACKAGE@-$1$2% \
+ https://github.com/browserify/browserify/tags (?:.*/)?v?@ANY_VERSION@@ARCHIVE_EXT@$

@@ -1,0 +1,41 @@
+From 1af765b885836e8e45b6a1ebc3e29676b3894f09 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bastien=20Roucari=C3=A8s?= <rouca@debian.org>
+Date: Mon, 6 Apr 2020 00:03:35 +0200
+Subject: Use mkdip
+
+Code review say that we use mkdirp.sync so we are safe
+
+Use mkdirp even for upgrade
+
+Forwarded: https://github.com/browserify/browserify/issues/2016
+---
+ bin/cmd.js   | 2 +-
+ package.json | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/bin/cmd.js b/bin/cmd.js
+index ab42137..1a63b19 100755
+--- a/bin/cmd.js
++++ b/bin/cmd.js
+@@ -2,7 +2,7 @@
+ var fs = require('fs');
+ var JSONStream = require('JSONStream');
+ var through = require('through2');
+-var mkdirp = require('mkdirp-classic');
++var mkdirp = require('mkdirp');
+ var path = require('path');
+ 
+ var b = require('./args')(process.argv.slice(2));
+diff --git a/package.json b/package.json
+index 164b3ac..d92e95f 100644
+--- a/package.json
++++ b/package.json
+@@ -46,7 +46,7 @@
+     "inherits": "~2.0.1",
+     "insert-module-globals": "^7.2.1",
+     "labeled-stream-splicer": "^2.0.0",
+-    "mkdirp-classic": "^0.5.2",
++    "mkdirp": "^0.5.2",
+     "module-deps": "^6.2.3",
+     "os-browserify": "~0.3.0",
+     "parents": "^1.0.1",

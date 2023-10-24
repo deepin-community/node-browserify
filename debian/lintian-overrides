@@ -1,0 +1,3 @@
+# used by --help command
+node-browserify: package-contains-documentation-outside-usr-share-doc usr/share/nodejs/browserify/bin/advanced.txt
+node-browserify: package-contains-documentation-outside-usr-share-doc usr/share/nodejs/browserify/bin/usage.txt

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -ex
+
+export NODE_PATH=/usr/share/nodejs:/usr/lib/nodejs
+
+# Broken tests:
+# - crypto*: incompatibility with current asn1.js
+# - spread.js & test/quotes.js! missing dependencies
+# - coffee_bin.js upstream hard code path to coffee tool
+# - coffeify missing depends
+# backbone tempory failure
+# multi-entry fail on pbuilder not on debci...
+tap -R spec --no-cov `ls test/*.js|grep -v test/crypto|grep -v test/spread.js|grep -v test/quotes.js | grep -v test/syntax_cache.js | grep -v test/coffee_bin.js | grep -v coffeeify.js | grep -v test/backbone.js | grep -v test/multi_entry.js`

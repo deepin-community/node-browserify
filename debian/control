@@ -1,15 +1,137 @@
-Source: template-repository
-Section: unknown
+Source: node-browserify
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Bastien Roucariès <rouca@debian.org>
+Section: javascript
+Testsuite: autopkgtest-pkg-nodejs
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends:
+ debhelper-compat (= 13)
+ , dh-sequence-nodejs
+ , coffeescript <!nocheck>
+ , node-assert <!nocheck> <!nodoc>
+ , node-backbone <!nocheck>
+ , node-backbone <!nocheck> <!nodoc>
+ , node-browser-pack <!nocheck> <!nodoc>
+ , node-browser-resolve (>= 2.0.0~) <!nocheck> <!nodoc>
+ , node-browser-unpack <!nocheck>
+ , node-browserify-zlib <!nocheck> <!nodoc>
+ , node-buffer <!nocheck> <!nodoc>
+ , node-cached-path-relative <!nocheck> <!nodoc>
+ , node-coffeeify <!nocheck>
+ , node-concat-stream <!nocheck> <!nodoc>
+ , node-console-browserify <!nocheck> <!nodoc>
+ , node-constants-browserify <!nocheck> <!nodoc>
+ , node-crypto-browserify <!nocheck> <!nodoc>
+ , node-defined <!nocheck> <!nodoc>
+ , node-deps-sort (>= 2.0.1) <!nocheck> <!nodoc>
+ , node-domain-browser (>= 1.2.0) <!nocheck> <!nodoc>
+ , node-events (>= 3.0.0) <!nocheck> <!nodoc>
+ , node-glob <!nocheck> <!nodoc>
+ , node-has (>= 1.0.0) <!nocheck> <!nodoc>
+ , node-htmlescape <!nocheck> <!nodoc>
+ , node-https-browserify <!nocheck> <!nodoc>
+ , node-inherits <!nocheck> <!nodoc>
+ , node-insert-module-globals (>= 7.2.0) <!nocheck> <!nodoc>
+ , node-isstream <!nocheck>
+ , node-jsonstream
+ , node-labeled-stream-splicer <!nocheck> <!nodoc>
+ , node-make-generator-function (>= 1.1.0) <!nocheck>
+ , node-mkdirp <!nocheck> <!nodoc>
+ , node-module-deps (>= 6.2.3) <!nocheck> <!nodoc>
+ , node-os-browserify <!nocheck> <!nodoc>
+ , node-parents <!nocheck> <!nodoc>
+ , node-path-browserify (>= 1.0.0) <!nocheck> <!nodoc>
+ , node-process <!nocheck> <!nodoc>
+ , node-punycode <!nocheck> <!nodoc>
+ , node-querystring-es3 <!nocheck> <!nodoc>
+ , node-read-only-stream <!nocheck> <!nodoc>
+ , node-readable-stream (>= 3.4.2) <!nocheck> <!nodoc>
+ , node-resolve <!nocheck> <!nodoc>
+ , node-semver <!nocheck>
+ , node-seq <!nocheck>
+ , node-shasum <!nocheck> <!nodoc>
+ , node-shell-quote <!nocheck> <!nodoc>
+ , node-stream-browserify <!nocheck> <!nodoc>
+ , node-stream-http (>= 3.0.0) <!nocheck> <!nodoc>
+ , node-string-decoder <!nocheck> <!nodoc>
+ , node-subarg <!nocheck> <!nodoc>
+ , node-syntax-error <!nocheck> <!nodoc>
+ , node-tap <!nocheck>
+ , node-temp <!nocheck>
+ , node-through <!nocheck>
+ , node-through2 <!nocheck> <!nodoc>
+ , node-timers-browserify <!nocheck> <!nodoc>
+ , node-tty-browserify (>= 0.0.1) <!nocheck> <!nodoc>
+ , node-underscore <!nocheck> <!nodoc>
+ , node-url <!nocheck> <!nodoc>
+ , node-util <!nocheck> <!nodoc>
+ , node-vm-browserify (>= 1.0.0) <!nocheck> <!nodoc>
+ , node-xtend <!nocheck> <!nodoc>
+Standards-Version: 4.6.1
+Vcs-Browser: https://salsa.debian.org/js-team/node-browserify
+Vcs-Git: https://salsa.debian.org/js-team/node-browserify.git
+Homepage: https://github.com/browserify/browserify#readme
+Rules-Requires-Root: no
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: node-browserify
+Architecture: all
+Depends:
+ ${misc:Depends}
+ , node-assert
+ , node-browser-pack
+ , node-browser-resolve (>= 2.0.0)
+ , node-browserify-zlib
+ , node-buffer
+ , node-cached-path-relative
+ , node-concat-stream
+ , node-console-browserify
+ , node-constants-browserify
+ , node-crypto-browserify
+ , node-defined
+ , node-deps-sort (>= 2.0.1)
+ , node-domain-browser (>= 1.2.0)
+ , node-events (>= 3.0.0)
+ , node-glob
+ , node-has (>= 1.0.0)
+ , node-htmlescape
+ , node-https-browserify
+ , node-inherits
+ , node-insert-module-globals (>= 7.2.1)
+ , node-jsonstream
+ , node-labeled-stream-splicer
+ , node-mkdirp
+ , node-module-deps (>= 6.2.3)
+ , node-os-browserify
+ , node-parents
+ , node-path-browserify (>= 1.0.0)
+ , node-process
+ , node-punycode
+ , node-querystring-es3
+ , node-read-only-stream
+ , node-readable-stream (>= 3.4.0)
+ , node-resolve
+ , node-shasum
+ , node-shell-quote
+ , node-stream-browserify
+ , node-stream-http (>= 3.0.0)
+ , node-string-decoder
+ , node-subarg
+ , node-syntax-error
+ , node-through2
+ , node-timers-browserify
+ , node-tty-browserify (>= 0.0.1)
+ , node-url
+ , node-util (>= 0.12.0)
+ , node-vm-browserify (>= 1.0.0)
+ , node-xtend
+ , nodejs:any
+Description: Node.js compiler for use in the browser
+ Browserify is a tool that allows developers to write Node.js-style modules
+ that compile for use in the browser.
+ .
+ Browserify lets developers use require in the browser, the same way this is
+ used in Node.js.
+ Browserify provides also suitable replacement a built-in Node.js
+ modules suitable for browser uses.
+ .
+ Node.js is an event-based server-side JavaScript engine.

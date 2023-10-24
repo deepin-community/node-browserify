@@ -1,4 +1,39 @@
 #!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+export BROWSERIFY=node $(CURDIR)/bin/cmd.js
 
 %:
 	dh $@
+
+override_dh_auto_build-indep:
+	mkdir -p node_modules
+	ln -s .. node_modules/browserify
+	dh_auto_build -i --buildsystem=nodejs
+
+override_dh_auto_install-indep:
+	dh_auto_install -i --buildsystem=nodejs
+	rm -rf debian/node-browserify/usr/share/nodejs/browserify/assets
+
+
+example/api/api.js: $(wildcard example/api/browser/*.js) example/api/build.js
+	cd $(dir $@) && node build.js > $(notdir $@)
+
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
+override_dh_installexamples: example/api/api.js
+	cd example/multiple_bundles && sh build.sh
+	cd example/source_maps && sh build.sh
+	dh_installexamples
+	find debian/node-browserify/usr/share/doc/node-browserify/examples -name .gitignore -delete
+else
+override_dh_installexamples:
+endif
+
+override_dh_fixperms:
+	dh_fixperms
+	chmod +x debian/node-browserify/usr/share/nodejs/browserify/bin/cmd.js
+
+override_dh_compress:
+	dh_compress -X/usr/share/doc/node-browserify/examples/
